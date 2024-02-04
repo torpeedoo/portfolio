@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+
+<style>
+
+.links {
+
+color:rgb(0, 255, 0); 
+font-family:'Courier New', Courier, monospace; 
+font-size: large;
+text-decoration: none;
+
+}
+
+.links:hover {
+
+color:rgb(0, 255, 0); 
+font-family:'Courier New', Courier, monospace; 
+font-size: large;
+text-decoration: underline;
+
+}   
+
+.blink {
+ animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.fixed {
+    position: absolute;
+    left:1cm;
+    top: 0.7cm;
+}
+
+.center {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+}  
+
+.fontcolor {
+
+color:rgb(0, 255, 0);
+font-family:'Courier New', Courier, monospace;
+font-size: large;
+padding: 0cm;
+text-shadow:
+    0 0 10px rgb(0, 255, 0),
+    0 0 92px rgb(0, 255, 0),
+    0 0 151px rgb(0, 255, 0);
+}
+
+
+</style>
+
+
+<head>
+
+</head>
+
+<header>
+
+<span class="fixed">
+<h1 class="fontcolor">
+    C:/marcus/projects><span class="blink">_</span>
+</h1>
+</span>
+
+</header>
+
+<span class="center">
+
+<div class="row", style="padding: 0cm; width: 20cm; height: 0cm;">
+
+{% for project in projects %}
+
+    <div class="col-md-100">
+
+        <div class="card mb-4"; style="border-color: rgb(0, 255, 0); border-style:solid; border-radius: 0cm; border-width: 0.07cm; box-shadow:
+        0 0 10px rgb(0, 100, 0),
+        0 0 50px rgb(0, 25, 0),
+        0 0 65px rgb(0, 20, 0);">
+
+            {% if project.image %}
+
+                <img class="card-img-top" src="{{ project.image.url }}" style="border-radius: 0cm; border-style: hidden; border-color: rgb(0, 255, 0);border-width: 0.07cm; ">
+
+            {% endif %}
+
+            <div class="card-body", style="background-color:#000e00; border-style: hidden; opacity: 1;">
+
+                <a href="{% url 'project_detail' project.pk %}" , class="card-title; links" , style="
+                text-shadow:
+                    0 0 10px rgb(0, 255, 0),
+                    0 0 92px rgb(0, 255, 0),
+                    0 0 151px rgb(0, 255, 0);">
+                    {{ project.title }}
+                </a>
+
+            </div>  
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</span>
+
+</div>
+
+{% endblock %}

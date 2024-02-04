@@ -1,0 +1,82 @@
+
+{% extends "base.html" %}
+
+{% block page_content %}
+
+
+
+<style>
+
+    .blink {
+     animation: blink 1s steps(1, end) infinite;
+    }
+    
+    @keyframes blink {
+    
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    
+    }
+    
+    .fixed {
+        position: absolute;
+        left:1cm;
+        top: 0.7cm;
+    }
+    
+    .fontcolor {
+
+        color:rgb(0, 255, 0);
+        font-family:'Courier New', Courier, monospace;
+        font-size: large;
+        padding: 0cm;
+        text-shadow:
+            0 0 10px rgb(0, 255, 0),
+            0 0 92px rgb(0, 255, 0),
+            0 0 151px rgb(0, 255, 0);
+
+
+    }
+
+</style>
+
+
+
+
+<header>
+
+    <span class="fixed">
+    <h1 class="fontcolor">
+        C:/marcus/{{ project.title }}><span class="blink">_</span>
+    </h1>
+    </span>
+    
+</header>
+
+
+
+
+<div class="row">
+    <div class="col-md-8">
+        {% if project.image %}
+            <img src="{{ project.image.url }}" width="40%" style="position:absolute; top: 3cm; left: 1cm; border: solid; border-color: rgb(0, 255, 0); border-width: 0.07cm;">
+        {% endif %}
+    </div>
+    <div class="col-md-4">
+        <span class="fontcolor" style="font-size: large; position: absolute; top: 3cm; left: 35cm">
+        <h5>About the project:</h5>
+        <p style="font-size: small;">{{ project.description }}</p>
+        <br>
+        <h5>Technology used:</h5>
+        <p style="font-size: small;">{{ project.technology }}</p>
+        </span>
+    </div>
+</div>
+{% endblock page_content %}

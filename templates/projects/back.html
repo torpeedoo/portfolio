@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+
+{% block page_content %}
+
+<style>
+
+.blink {
+ animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.fixed {
+    position: relative;
+    right:7cm;
+    top: 1cm;
+}
+
+.center {
+    position: absolute;
+    top: 0cm;
+    left: 1cm;
+}
+
+html::-webkit-scrollbar {
+    width: 100px;
+  }
+
+</style>
+
+
+<head>
+
+</head>
+
+<header>
+
+<span class="fixed">
+<h1 style="color:rgb(0, 255, 0); font-family:'Courier New', Courier, monospace; font-size: large;">
+    C:/marcus/projects><span class="blink">_</span>
+</h1>
+</span>
+
+</header>
+
+<span class="center">
+
+<div class="row", style="padding: 3cm; width: 83cm; height: 0cm;">
+
+{% for project in projects %}
+
+    <div class="col-md-7">
+
+        <div class="card mb-4"; style="border-color: rgb(0, 255, 0); border-style:solid; border-radius: 0cm; border-width: 0.07cm;">
+
+            {% if project.image %}
+
+                <img class="card-img-top" src="{{ project.image.url }}">
+
+            {% endif %}
+
+            <div class="card-body", style="background-color:#080808; border-style: hidden;">
+
+                <h5 class="card-title", style="color: rgb(0, 255, 0); font-family: 'Courier New', Courier, monospace;">{{ project.title }}</h5>
+
+                <p class="card-text", style="color: rgb(0, 255, 0); font-family: 'Courier New', Courier, monospace;">{{ project.description }}</p>
+
+                <a href="{% url 'project_detail' project.pk %}"
+                   style="color: rgb(0, 0, 0); background-color: rgb(0, 255, 0); border-style: hidden; border-radius: 0; font-family: 'Courier New', Courier, monospace;",
+                   class="btn bnt-primary">
+
+                    Read More
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</span>
+
+</div>
+
+{% endblock %}
